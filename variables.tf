@@ -44,3 +44,13 @@ variable "security_groups" {
     }
   }]
 }
+
+variable "private_subnets_ids" {
+  type    = list
+  default = ["subnet-0e5f627c2109ec28b", "subnet-0b443601a542274fc"]
+}
+
+variable "security_groups_ids" {
+  type    = list
+  default = ["sg-013da2e4bf2a8043f"]
+}
