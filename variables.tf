@@ -12,7 +12,7 @@ variable "networking" {
     vpc_name        = "terraform-vpc"
     azs             = ["ap-southeast-1a", "ap-southeast-1b"]
     public_subnets  = ["10.0.1.0/24", "10.0.2.0/24"]
-    private_subnets = ["10.0.3.0/24", "10.0.4.0/24"]
+    private_subnets = ["10.0.10.0/24", "10.0.20.0/24"]
     nat_gateways    = true
   }
 }
@@ -46,11 +46,11 @@ variable "security_groups" {
 }
 
 variable "private_subnets_ids" {
-  type    = list
+  type    = list(any)
   default = ["subnet-0e5f627c2109ec28b", "subnet-0b443601a542274fc"]
 }
 
 variable "security_groups_ids" {
-  type    = list
+  type    = list(any)
   default = ["sg-013da2e4bf2a8043f"]
 }
