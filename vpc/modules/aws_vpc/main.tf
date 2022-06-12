@@ -32,6 +32,19 @@ resource "aws_subnet" "private_subnets" {
   }
 }
 
+# DB SUBNETS
+resource "aws_subnet" "private_db_subnets" {
+  count                   = var.networking.prvt_db_subnets == null ? 0 : length(var.networking.private_subnets)
+  vpc_id                  = aws_vpc.custom_vpc.id
+  cidr_block              = var.networking.prvt_db_subnets[count.index]
+  availability_zone       = var.networking.azs[count.index]
+  map_public_ip_on_launch = false
+
+  tags = {
+    Name = "prvt_db_subnet-${count.index}"
+  }
+}
+
 # INTERNET GATEWAY
 resource "aws_internet_gateway" "i_gateway" {
   vpc_id = aws_vpc.custom_vpc.id

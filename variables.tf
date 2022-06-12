@@ -5,6 +5,7 @@ variable "networking" {
     azs             = list(string)
     public_subnets  = list(string)
     private_subnets = list(string)
+    prvt_db_subnets = list(string)
     nat_gateways    = bool
   })
   default = {
@@ -12,7 +13,8 @@ variable "networking" {
     vpc_name        = "terraform-vpc"
     azs             = ["ap-southeast-1a", "ap-southeast-1b"]
     public_subnets  = ["10.0.1.0/24", "10.0.2.0/24"]
-    private_subnets = ["10.0.10.0/24", "10.0.20.0/24"]
+    private_subnets = ["10.0.10.0/24", "10.0.11.0/24"]
+    prvt_db_subnets = ["10.0.20.0/24", "10.0.21.0/24"]
     nat_gateways    = true
   }
 }
